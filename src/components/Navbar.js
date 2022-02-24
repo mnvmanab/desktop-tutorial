@@ -36,34 +36,34 @@ export default function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <Link
+              <a
                 className="nav-link dropdown-toggle"
-                to="/"
+                href="/"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Dropdown
-              </Link>
+              </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link className="dropdown-item" to="/">
+                  <a className="dropdown-item" href="/">
                     Action
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/">
+                  <a className="dropdown-item" href="/">
                     Another action
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/">
+                  <a className="dropdown-item" href="/">
                     Something else here
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </li>

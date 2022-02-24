@@ -25,6 +25,7 @@ export default function Textbox(props) {
     text.select();
     // text.setSelectionRange(0,999);
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert('Copied to clipboard !', 'success');
   };
 
@@ -61,19 +62,38 @@ export default function Textbox(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-1"
+          onClick={handleUpClick}
+        >
           convert uppercase
         </button>
-        <button className="btn btn-success mx-2" onClick={handleLowClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mx-2 my-1"
+          onClick={handleLowClick}
+        >
           convert lowercase
         </button>
-        <button className="btn btn-warning mx-2" onClick={handleClear}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-warning mx-2 my-1"
+          onClick={handleClear}
+        >
           clear text
         </button>
-        <button className="btn btn-danger mx-2" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-danger mx-2 my-1"
+          onClick={handleCopy}
+        >
           copy text
         </button>
-        <button className="btn btn-secondary mx-2" onClick={handleExtraSpace}>
+        <button
+          className="btn btn-secondary mx-2 my-1"
+          onClick={handleExtraSpace}
+        >
           remove extra space
         </button>
       </div>
@@ -82,14 +102,26 @@ export default function Textbox(props) {
         style={{ color: props.mode === 'light' ? 'black' : 'white' }}
       >
         <h2>Your text summary</h2>
+        {/* filter() is used an arrow function that provide true or false */}
         <p>
-          {text.split(' ').length} words and {text.length} characters.
+          {
+            text.split(' ').filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{' '}
+          words and {text.length} characters.
         </p>
-        <p>{0.008 * text.split(' ').length} minutes read</p>
+        <p>
+          {0.008 *
+            text.split(' ').filter((element) => {
+              return element.length !== 0;
+            }).length}{' '}
+          minutes read
+        </p>
 
         <h2>Preview</h2>
         <p>
-          <i>{text.length > 0 ? text : 'enter text to preview'}</i>
+          <i>{text.length > 0 ? text : 'Nothing to preview'}</i>
         </p>
       </div>
     </>

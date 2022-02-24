@@ -9,14 +9,17 @@ export default function Alert(props) {
   };
 
   return (
-    //props.alert is set null by default...so we use this syntax
-    props.alert && (
-      <div
-        className={`alert alert-${props.alert.type} alert-dismissible fade show`}
-        role="alert"
-      >
-        <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
-      </div>
-    )
+    <div style={{ height: '50px' }}>
+      {/* 1)props.alert is set null by default...so we use this syntax */}
+      {props.alert && (
+        <div
+          className={`alert alert-${props.alert.type} 
+    alert-dismissible fade show`}
+          role="alert"
+        >
+          <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
+        </div>
+      )}
+    </div>
   );
 }
